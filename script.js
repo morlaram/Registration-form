@@ -193,7 +193,7 @@ form.addEventListener("submit", (e) => {
       localStorage.setItem("registrationSubmitted", "true");
       disableForm();
       successMsg.classList.remove("hidden");
-      showToast("Registration submitted! Thank you.");
+      showToast("Your submission has been recorded.Thanks for being part of Tech for Girls!.");
       launchConfetti();
       window.location.reload();
     })
