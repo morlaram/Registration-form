@@ -1,0 +1,302 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(120deg, #232946 0%, #5f2c82 100%);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.stars {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    background: #232946;
+    padding: 2.5rem 2rem;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px 0 rgba(95, 44, 130, 0.25), 0 0 24px 0 #5f2c82;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #393e6e;
+    border-radius: 6px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+}
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #eebefa 0%, #5f2c82 100%);
+    border-radius: 6px;
+    transition: width 0.3s;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    color: #eebefa;
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px #5f2c82;
+}
+
+.form-section {
+    margin-bottom: 1.2rem;
+    text-align: left;
+    position: relative;
+}
+
+/* Floating label styles */
+.floating-label {
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    color: #b8b8ff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.2s;
+    background: transparent;
+}
+input:focus + .floating-label,
+input.filled + .floating-label,
+input:active + .floating-label {
+    top: -12px;
+    left: 8px;
+    font-size: 0.85rem;
+    color: #eebefa;
+    background: #232946;
+    padding: 0 4px;
+}
+
+label {
+    display: none;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="file"] {
+    width: 100%;
+    padding: 0.6rem 0.6rem 0.6rem 0.6rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #393e6e;
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(95, 44, 130, 0.10);
+    transition: box-shadow 0.2s, background 0.2s;
+}
+
+input:focus {
+    outline: 2px solid #eebefa;
+    background: #2d325a;
+}
+
+button {
+    background: linear-gradient(90deg, #5f2c82 0%, #eebefa 100%);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 8px rgba(95, 44, 130, 0.15);
+}
+
+button:disabled {
+    background: #393e6e;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background: linear-gradient(90deg, #eebefa 0%, #5f2c82 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.share-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#shareCounter {
+    font-size: 1rem;
+    color: #b8b8ff;
+}
+
+#shareCompleteMsg {
+    color: #7fffd4;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+#successMsg {
+    color: #7fffd4;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    font-weight: 700;
+    animation: fadeIn 0.7s;
+}
+
+/* Toast styles */
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #232946;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(95,44,130,0.18);
+    font-size: 1rem;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, bottom 0.3s;
+}
+.toast.show {
+    opacity: 1;
+    pointer-events: auto;
+    bottom: 48px;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Multi-step form styles */
+.form-step {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+.form-step.hidden {
+    display: none;
+}
+#captchaLabel {
+    color: #eebefa;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+#captchaInput {
+    margin-top: 0.3rem;
+}
+#terms {
+    margin-right: 0.5rem;
+}
+label[for="terms"] {
+    color: #eebefa;
+    font-size: 1rem;
+    font-weight: 500;
+    vertical-align: middle;
+    cursor: pointer;
+    display: inline;
+}
+button#prevStep2, button#prevStep3 {
+    background: #393e6e;
+    color: #eebefa;
+    margin-right: 0.5rem;
+}
+button#nextStep1, button#nextStep2 {
+    margin-right: 0.5rem;
+}
+
+/* Animated placeholder styles */
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="email"]::placeholder {
+    color: #b8b8ff;
+    opacity: 1;
+    transition: color 0.5s, opacity 0.5s;
+    animation: placeholderFade 2s infinite alternate;
+}
+@keyframes placeholderFade {
+    0% { color: #b8b8ff; opacity: 1; }
+    100% { color: #eebefa; opacity: 0.7; }
+}
+
+/* Success animation styles */
+.success-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+.checkmark-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #7fffd4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 16px #7fffd4aa;
+    position: relative;
+    z-index: 2;
+}
+.checkmark {
+    width: 40px;
+    height: 20px;
+    border-left: 6px solid #232946;
+    border-bottom: 6px solid #232946;
+    transform: rotate(-45deg);
+    margin-left: 10px;
+    animation: checkmarkDraw 0.7s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+@keyframes checkmarkDraw {
+    0% { width: 0; height: 0; opacity: 0; }
+    50% { width: 40px; height: 0; opacity: 1; }
+    100% { width: 40px; height: 20px; opacity: 1; }
+}
+#confettiCanvas {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+    width: 200px;
+    height: 120px;
+    z-index: 1;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.2rem 0.5rem;
+        max-width: 98vw;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
+    .progress-bar {
+        height: 6px;
+    }
+    .toast {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.2rem;
+    }
+}
